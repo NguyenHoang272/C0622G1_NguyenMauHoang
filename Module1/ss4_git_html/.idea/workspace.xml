@@ -20,14 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da36ce64-b185-447a-9e7f-ec7416893e56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Hihi.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ss3_ma_gia_luu_do/Baitap/Mô tả thuật toán bằng Pseudo code &amp; Flowchart/ba0fc4fb6c32af6cf6234.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ss3_ma_gia_luu_do/Baitap/Mô tả thuật toán bằng Pseudo code &amp; Flowchart/c26e8f8b2742e41cbd533.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ss3_ma_gia_luu_do/Baitap/Mô tả thuật toán bằng Pseudo code &amp; Flowchart/c37e1b62b3ab70f529ba2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ss3_ma_gia_luu_do/Baitap/Mô tả thuật toán bằng Pseudo code &amp; Flowchart/d917fffb5732946ccd235.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ss3_ma_gia_luu_do/Baitap/Mô tả thuật toán bằng Pseudo code &amp; Flowchart/f2b182a42a6de933b07c1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tao_cv_ca_nhan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_html_form_table/bai_tap/thoi_khoa_bieu.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../webstorm2020.1/tao_danh_sach/tao_danh_sach_1.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ss5_html_form_table/bai_tap/form_survey_khach_hang.html" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -72,6 +65,7 @@
       <workItem from="1656643848863" duration="3612000" />
       <workItem from="1656656498721" duration="657000" />
       <workItem from="1656663260931" duration="1023000" />
+      <workItem from="1656919236612" duration="57000" />
     </task>
     <servers />
   </component>
@@ -91,9 +85,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1656665303295">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1656919259344">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1656665303295" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1656919259344" />
   </component>
 </project>
