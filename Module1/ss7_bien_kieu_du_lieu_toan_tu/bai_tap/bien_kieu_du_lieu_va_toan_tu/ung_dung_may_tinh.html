@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>May tinh</title>
+
+</head>
+<body>
+<h2>Máy_tính</h2>
+
+<input type="number" id="Number1"/>
+<input type="number" id="Number2"/>
+<br>
+<button onclick="cong()">Cộng</button>
+<button onclick="tru()">Trừ</button>
+<button onclick="nhan()">Nhân</button>
+<button onclick="chia()">Chia</button>
+<p id="Ket_qua"></p>
+</body>
+<script>
+    function cong() {
+        let a = parseInt(document.getElementById("Number1").value);
+        let b = parseInt(document.getElementById("Number2").value);
+        let kq = a + b;
+        document.getElementById("Ket_qua").innerHTML = kq;
+
+    }
+
+    function tru() {
+        let a = parseInt(document.getElementById("Number1").value);
+        let b = parseInt(document.getElementById("Number2").value);
+        let kq = a - b;
+        document.getElementById("Ket_qua").innerHTML = kq;
+
+    }
+    function nhan() {
+        let a = parseInt(document.getElementById("Number1").value);
+        let b = parseInt(document.getElementById("Number2").value);
+        let kq = a * b;
+        document.getElementById("Ket_qua").innerHTML = kq;
+
+    }
+    function chia() {
+        let a = parseInt(document.getElementById("Number1").value);
+        let b = parseInt(document.getElementById("Number2").value);
+        let kq = a / b;
+        document.getElementById("Ket_qua").innerHTML = kq;
+
+    }
+
+</script>
+</html>
