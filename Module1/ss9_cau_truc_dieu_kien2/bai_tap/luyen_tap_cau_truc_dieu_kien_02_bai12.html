@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 12</title>
+</head>
+<body>
+<script>
+    let soThangVay= prompt("Số tháng vay");
+    let tienGoc= prompt("Số tiền gốc (trieu dong)");
+    let tongTien;
+    if(soThangVay<6){
+        tongTien = tienGoc * Math.pow((1+15/100), soThangVay);
+    }else if (soThangVay<12) {
+            tongTien = tienGoc * Math.pow((1+16/100), soThangVay);
+        }else if (soThangVay<18) {
+                tongTien = tienGoc * Math.pow((1+18/100), soThangVay);
+            }else if (soThangVay<24){
+                    tongTien=tienGoc*Math.pow((1+19/100),soThangVay);
+        }
+    else
+        tongTien=tienGoc*Math.pow((1+25/100),soThangVay);
+        document.write("Tong tien la:"+tongTien.toFixed(3)+'treu dong');
+
+</script>
+</body>
+</html>

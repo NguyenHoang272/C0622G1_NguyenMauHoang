@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 7</title>
+</head>
+<body>
+<script>
+    let soPhutGoi = prompt('Nhập số phút gọi của hộ gia đình.\n'+
+    let giaTien = 2000;
+    if (soPhutGoi <= 50) {
+        giaTien = giaTien + soPhutGoi * 600;
+    } else if (soPhutGoi <= 150) {
+        giaTien = giaTien + 50 * 600 + (soPhutGoi - 50) * 400;
+    } else {
+        giaTien = giaTien + 50 * 600 + 150 * 400 + (soPhutGoi - 200) * 200;
+
+    }
+    alert('Giá cước = ' + giaTien + 'VNĐ');
+
+</script>
+</body>
+</html>

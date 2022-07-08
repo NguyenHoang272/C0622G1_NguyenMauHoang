@@ -1,6 +1,6 @@
-inputLy= prompt("Ly");
-inputHoa= prompt("Hoa");
-inputSinh= prompt("Sinh");
+let inputLy= prompt("Ly");
+let inputHoa= prompt("Hoa");
+let inputSinh= prompt("Sinh");
 let Ly=parseInt(inputLy);
 let Hoa=parseInt(inputHoa);
 let Sinh=parseInt(inputSinh);
