@@ -8,26 +8,26 @@
 <body>
 <table>
     <tr>
-        <th><label for="Amount">Amount</label></th>
+        <th><label for="amount">Amount</label></th>
         <th>From Currency</th>
         <th>To Currency</th>
         <th></th>
     </tr>
     <tr>
-        <td><input type="text" id="Amount"></td>
+        <td><input type="text" id="amount"></td>
         <td>
-            <select id="From">
+            <select id="from">
                 <option value="VND">VND</option>
                 <option value="USD">USD</option>
             </select>
         </td>
         <td>
-            <select id="To">
+            <select id="to">
                 <option value="VND">VND</option>
                 <option  value="USD">USD</option>
             </select>
         </td>
-        <td><button onclick="ChangeMoney()">Convert</button></td>
+        <td><button onclick="changeMoney()">Convert</button></td>
     </tr>
 </table>
 
@@ -37,23 +37,23 @@
 </html>
 
 <script>
-    function ChangeMoney() {
-        let Amount = document.getElementById("Amount").value;
-        let FromC = document.getElementById("From").value;
-        let To = document.getElementById("To").value;
+    function changeMoney() {
+        let amount = document.getElementById("amount").value;
+        let fromC = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
         let Result;
 
 
-        if (FromC == "USD" && To == "VND") {
-            Result = "Result: " + (Amount * 23000) + " Đ";
+        if (fromC == "USD" && to == "VND") {
+            Result = "Result: " + (amount * 23000) + " Đ";
         }
-        else if (FromC == "VND"&& To =="USD"){
-            Result = "Result: "+ (Amount / 23000) + " $";
+        else if (fromC == "VND"&& to =="USD"){
+            Result = "Result: "+ (amount / 23000) + " $";
         }
-        else if (FromC == "VND") {
-            Result = "Result: " + Amount + " Đ"
+        else if (fromC == "VND") {
+            Result = "Result: " + amount + " Đ"
         } else {
-            Result = "Result: " + Amount + " $"
+            Result = "Result: " + amount + " $"
         }
 
         document.getElementById("Result").innerHTML = Result;
