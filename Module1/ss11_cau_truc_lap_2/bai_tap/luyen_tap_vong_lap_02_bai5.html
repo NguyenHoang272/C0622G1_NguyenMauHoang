@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 5</title>
+</head>
+<body>
+<script>
+    let tienGui = prompt('Nhập số tiền bạn gửi);
+    tienGui=parseFloat(tienGui);
+    let n = prompt('Số tháng bạn muốn gửi');
+
+    for (let i = 0; i < n; i++) {
+        tienGui = tienGui + tienGui / 100 * 6;
+    }
+    alert('Số tiền bạn nhận được sau '+n+' tháng là '+ tienGui.toFixed(3)+'trĐ');
+</script>
+</body>
+</html>

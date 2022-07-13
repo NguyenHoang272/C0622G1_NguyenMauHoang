@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 4</title>
+</head>
+<body>
+<script>
+    let dem = 0;
+    let n=+prompt("Số bắt đầu");
+    let fibonaci5 = ' số fibonacci đầu tiên chia hết cho 5 là:<br>';
+    let fn, f1 = 0, f2 = 1;
+    while (dem < 100) {
+        fn = f1 + f2;
+        f1 = f2;
+        f2 = fn;
+        if (fn % 5 == 0&&fn>n) {
+            fibonaci5 += fn + '<br>';
+            dem++;
+        }
+    }
+    document.write(fibonaci5);
+</script>
+</body>
+</html>

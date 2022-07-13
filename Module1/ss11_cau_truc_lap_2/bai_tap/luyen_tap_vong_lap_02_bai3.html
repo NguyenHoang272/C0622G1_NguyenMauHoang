@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let canh = parseInt(prompt('Nhập chiều dài cạnh của tam giác'));
+    let xuatDauSao;
+
+    xuatDauSao = '';
+    for (let i = 1; i <= canh; i++) {
+        for (let j = 1; j <= i; j++) {
+            xuatDauSao += '*';
+        }
+        xuatDauSao += '<br>';
+    }
+    document.write(xuatDauSao + '<br>');
+
+
+    xuatDauSao = '';
+    for (let i = canh; i >= 1; i--) {
+        for (let j = 1; j <= i; j++) {
+            xuatDauSao += '*';
+        }
+        xuatDauSao += '<br>';
+    }
+    document.write(xuatDauSao + '<br>');
+
+
+    xuatDauSao = '';
+    for (let i = canh; i >= 1; i--) {
+        for (let j = canh; j >= 1; j--) {
+            if (j - i > 0) {
+                xuatDauSao += '&ensp;';
+            } else {
+                xuatDauSao += '*';
+            }
+        }
+        xuatDauSao += '<br>';
+    }
+    document.write(xuatDauSao + '<br>');
+
+    xuatDauSao = '';
+    for (let i = 1; i <= canh; i++) {
+        for (let j = canh; j >= 1; j--) {
+            if (j - i > 0) {
+                xuatDauSao += '&ensp;';
+            } else {
+                xuatDauSao += '*';
+            }
+        }
+        xuatDauSao += '<br>';
+    }
+    document.write(xuatDauSao + '<br>');
+
+
+</script>
+</body>
+</html>

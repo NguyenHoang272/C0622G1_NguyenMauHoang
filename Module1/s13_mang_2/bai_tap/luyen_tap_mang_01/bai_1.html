@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 1</title>
+</head>
+<body>
+<script>
+    let mangSoNguyen = [];
+    let phanTuLonHon10 = '';
+    let tong = 0;
+
+    for (let i = 0; i < 10; i++) {
+        mangSoNguyen[i] = +prompt('Nhập giá trị phần tử thứ ' + i);//nhập giá trị
+        if (mangSoNguyen[i] >= 10) {
+            phanTuLonHon10 += mangSoNguyen[i] + '<br>';
+            tong += mangSoNguyen[i];
+        }
+    }
+
+    document.write('Mảng đã nhập:' + mangSoNguyen + '<br>');
+    document.write('Những phần tử lớn hơn hoặc bằng 10:<br> ' + phanTuLonHon10);
+    document.write('Tổng các phần tử lớn hơn hoặc bằng 10 = ' + tong);
+</script>
+</body>
+</html>
