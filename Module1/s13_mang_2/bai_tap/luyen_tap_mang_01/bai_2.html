@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 2</title>
+</head>
+<body>
+<script>
+    // let array = Array();
+    // let number, max = 0;
+    // for (let i = 0; i < 10; i++) {
+    //     do {
+    //         number = +prompt('Element ' + i + '=');
+    //     } while (array.includes(number))
+    //     array[i] = number;
+    // }
+    //
+    // for (let value of array) {
+    //     if (value > max) {
+    //         max = value
+    //     }
+    // }
+    // document.write(array + '<br>');
+    // document.write('max value of array is ' + max + ' at position' + array.indexOf(max));
+
+    let array= Array();
+    let number=0;
+    let max=0;
+    for (let i = 0; i <10 ; i++) {
+        do{
+            number=+prompt('Element'+i+'=');
+        } while(array.includes(number))
+            array[i]=number;
+    }
+    for(let value of array){
+        if(value>max){
+            max= value;
+        }
+    }
+    document.write(array+'<br>');
+    document.write('gia trị lớn nhất'+max+'<br>'+'vi tri'+array.indexOf(max));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 7</title>
+</head>
+<body>
+<script>
+    let array = [2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 10];
+    let number = +prompt('Nhập vào một số');
+    let index = array.indexOf(number);
+    if (index == -1) {
+        alert(number + " is not in the array");
+    } else {
+        do {
+            array.splice(index, 1);
+            index = array.indexOf(number);
+        }
+        while (index != -1) ;
+        alert('Chuỗi sau khi xóa ' + number + ' là: ' + array);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 3</title>
+</head>
+<body>
+<script>
+    // let mangSoNguyen = [];
+    // let n= +prompt("Số phần tử của mảng");
+    // for (let i = 0; i < n; i++) {
+    //     mangSoNguyen[i] = +prompt('Nhập giá trị phần tử thứ ' + i);
+    // }
+    //
+    // let max = 0;
+    // for (let value of mangSoNguyen) {
+    //     if (value > max) {
+    //         max = value;
+    //     }
+    // }
+    // let tong = mangSoNguyen.reduce((tong, value) => tong + value);
+    // let trungBinhCong = tong / mangSoNguyen.length;
+    //
+    // document.write('Mảng đã nhập:' + mangSoNguyen + '<br>');
+    // document.write('max= ' + max + '<br>');
+    // document.write('Trung Binh Cộng = ' + trungBinhCong);
+
+    let mangSoNguyen = [];
+    let n= +prompt("Số phần tử của mảng");
+    let tong=0;
+    let trungBinhCong=0;
+    let max=0;
+    for (let i = 0; i < n; i++) {
+        mangSoNguyen[i] = +prompt('Nhập giá trị phần tử thứ ' + i);
+    }
+    for(i=0;i<mangSoNguyen.length;i++){
+        mangSoNguyen[i]>max;
+        max=mangSoNguyen[i];
+        tong+=mangSoNguyen[i];
+        trungBinhCong=tong/mangSoNguyen.length;
+    }
+    document.write('Mảng đã nhập:' + mangSoNguyen + '<br>');
+    document.write('tong= ' + tong + '<br>');
+    document.write('max= ' + max + '<br>');
+    document.write('Trung Binh Cộng = ' + trungBinhCong);
+</script>
+</body>
+</html>
