@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 5</title>
+</head>
+<body>
+<script>
+    function timMin(a, b, c) {
+        let min = a;
+        if (min > b) {
+            min = b;
+        }
+        if (min > c) {
+            min = c;
+        }
+        return min;
+    }
+
+    let soThuNhat = +prompt('Nhập số thứ 1');
+    let soThuHai = +prompt('Nhập số thứ 2');
+    let soThuBa = +prompt('Nhập số thứ 3');
+
+    document.write('Min của 3 số ' + soThuNhat + ', ' + soThuHai + ', ' + soThuBa + ' là ' + timMin(soThuNhat, soThuHai, soThuBa));
+</script>
+</body>
+</html>

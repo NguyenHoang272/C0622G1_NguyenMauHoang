@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 5</title>
+</head>
+<body>
+<script>
+    let nhapTen= prompt("Nhập tên");
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let chomSao =  ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+
+    function xuat(timKiem) {
+        let index = ngoiSao.indexOf(timKiem);
+        if (index == -1) {
+           return ("ko có")
+        } else {
+           return ("tên chòm sao:"+"<br>"+ chomSao[index]);
+        }
+    }
+    document.write(xuat(nhapTen));
+
+</script>
+</body>
+</html>

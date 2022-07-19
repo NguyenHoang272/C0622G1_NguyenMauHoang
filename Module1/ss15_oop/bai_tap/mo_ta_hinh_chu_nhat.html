@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HCN</title>
+</head>
+<body>
+<canvas id="myCanvas" height="100px" width="200px" style="border: 1px solid orangered"></canvas>
+<script>
+ class Rectangle{
+     constructor(length,width) {
+         this.length = length;
+         this.length = width;
+     }
+     setLength(value){
+         this.length= value;
+     }
+     setWidth(value){
+         this.width= value;
+     }
+     getdienTich(){
+         return this.length * this.width;
+     }
+     getchuVi(){
+         return this.width + this.length;
+     }
+     show(x, y) {
+         let ctx = document.getElementById("myCanvas").getContext("2d");
+         ctx.fillRect(x, y, this.length, this.width);
+     }
+
+ }
+ let hinhChuNhat = new Rectangle(100, 300);
+ document.write('Diện tích: ' + hinhChuNhat.getdienTich());
+ document.write('Chu vi: ' + hinhChuNhat.getchuVi());
+ hinhChuNhat.show(0, 0);
+ document.write("<br>");
+ hinhChuNhat.setLength(400);
+ hinhChuNhat.setWidth(300);
+ document.write('Diện tích: ' + hinhChuNhat.getdienTich());
+ document.write('Chu vi: ' + hinhChuNhat.getchuVi());
+</script>
+</body>
+</html>
