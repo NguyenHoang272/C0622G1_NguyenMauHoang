@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô tả Temperature</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(doC) {
+            this.doC = doC;
+        }
+        setDoC(value) {
+            this.doC = value;
+        }
+        getDoC() {
+            return this.doC;
+        }
+        chuyenSangDoF() {
+            return (this.doC*1.8 + 30);
+        }
+        chuyenSangDoK() {
+            return (this.doC + 273.15);
+        }
+    }
+
+    let nhietDo = new Temperature();
+    nhietDo.setDoC(10);
+    document.write(nhietDo.getDoC() + ' độ C= ' + nhietDo.chuyenSangDoF() + ' độ F = ' + nhietDo.chuyenSangDoK() + ' độ K');
+
+</script>
+</body>
+</html>
