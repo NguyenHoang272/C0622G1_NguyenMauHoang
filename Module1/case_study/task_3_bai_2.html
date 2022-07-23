@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 2</title>
+</head>
+<body>
+<script>
+    let mangA = ['2','3','1'];
+    let mangB = ['1','4','3'];
+    let mangC = [];
+    for (let i = 0; i < mangB.length; i++) {
+        let count = 0;
+        for (let j = 0; j < mangA.length; j++) {
+            if (mangB[i] === mangA[j]) {
+                count++;
+            }
+        }
+        for (let j = 0; j < mangC.length; j++) {
+            if (mangB[i] === mangC[j]) {
+                count++;
+            }
+        }
+        if (count === 0) {
+            mangC.push(mangB[i]);
+        }
+    }
+    document.write(mangC);
+
+</script>
+</body>
+</html>
