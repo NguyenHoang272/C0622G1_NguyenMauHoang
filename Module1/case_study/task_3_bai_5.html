@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Bai 5</title>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script>
+        vars = [{ key: "Cafe", value: 5 }, { key: "Cam vắt", value: 6 }, { key: "Nước ép cà rốt", value: 7 }, { key: "Nước ép cà chua", value: 8 }, { key: "Nước lọc", value: 9 }, { key: "Nước dừa", value: 10 }];
+        s = "<table><tr><th>Drink</th><th>SL</th><th>Thành tiền</th></tr>";
+        sum = 0;
+        function order() {
+            var e = document.getElementById("drink");
+            i = e.options[e.selectedIndex].value;
+            document.getElementById("id1").innerHTML = vars[i].key + "  :  " + vars[i].value + " đồng";
+            document.getElementById("id2").innerHTML = " Nhap so luong : <input type='number' id='num' />  <button onclick='submit()'>submit</button>";
+        }
+        function submit() {
+            var e = document.getElementById("drink");
+            i = e.options[e.selectedIndex].value;
+            tmp = vars[i].value * document.getElementById('num').value;
+            s = s + "<tr><td>" + vars[i].key + "</td><td>" + document.getElementById('num').value + "</td><td>" + tmp + "</td></tr>";
+            document.getElementById("result").innerHTML = s + "/<table>";
+            sum = sum + tmp;
+        }
+        function end() {
+            document.getElementById("id1").innerHTML = "";
+            document.getElementById("id2").innerHTML = "";
+            document.getElementById("id3").innerHTML = "Tổng tiền là : " + sum + " đồng";
+        }
+    </script>
 </head>
 <body>
+<script>
+    vars = [{ key: "Cafe", value: 5 }, { key: "Cam vắt", value: 6 }, { key: "Nước ép cà rốt", value: 7 }, { key: "Nước ép cà chua", value: 8 }, { key: "Nước lọc", value: 9 }, { key: "Nước dừa", value: 10 }];
+    for (let i = 0; i < 6; i++) {
+        document.write((i + 1) + ".  " + vars[i].key + " <br>");
+    }
+    document.write(7 + ". Thoát <br>");
+</script>
+<label for="drink">Choose a drink:</label>
+<select name="drink" id="drink">
+    <option value="0" selected>Cafe</option>
+    <option value="1">Cam vắt</option>
+    <option value="2">Nước ép cà rốt</option>
+    <option value="3">Nước ép cà chua</option>
+    <option value="4">Nước lọc</option>
+    <option value="5">Nước dừa</option>
+</select>
+<button onclick="order()">Chọn</button>
+<button onclick="end()">Thoát</button>
+<p id="id1"></p>
+<p id="id2"></p>
+<div id="result"></div>
+<b id="id3"></b>
+
+
 
 </body>
 </html>
