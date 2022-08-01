@@ -9,18 +9,18 @@
     function tinhTong() {
         let m = +prompt('Nhap hàng: ');
         let n = +prompt('Nhap cột:');
-        let Arr = new Array(m);
+        let arr = new Array(m);
         let sum = 0;
-        for(let i = 0; i < Arr.length; i++) {
-            Arr[i] = new Array(n);
-            for(let j = 0; j < Arr[i].length; j++) {
-                Arr[i][j] = +prompt('Nhập giá trị: ', 1);
-                if(Arr[i][j] % 2 == 0) {
-                    sum += Arr[i][j];
+        for(let i = 0; i < arr.length; i++) {
+            arr[i] = new Array(n);
+            for(let j = 0; j < arr[i].length; j++) {
+                arr[i][j] = +prompt('Nhập giá trị: ', 1);
+                if(arr[i][j] % 2 == 0) {
+                    sum += arr[i][j];
                 }
             }
         }
-        console.log(Arr);
+        console.log(arr);
         return sum;
     }
     document.write('Tổng các số chẵn: ', tinhTong());

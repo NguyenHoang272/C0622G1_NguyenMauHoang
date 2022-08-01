@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>DANH SÁCH SẢN PHẨM</h3>
+<input type="text" id="nhapNhap">
+<input type="button" onclick="addProduct()" value="Nhập vào">
+<p id="bangKetQua"></p>
+</body>
+<script>
+    let productList=[];
+    function showAllProduct(list) {
+        let content= '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <td>Số thứ tự</td>\n' +
+            '        <td>Tên sản phẩm</td>\n' +
+            '        <td>Sửa</td>\n' +
+            '        <td>Xóa</td>\n' +
+            '    </tr>';
+        for (let i = 0; i <list.length ; i++) {
+            content +='<tr>\n' +
+                '        <td>'+(i+1)+'</td>\n' +
+                '        <td>'+list[i]+'</td>\n' +
+                '        <td><input type="button" onclick="editProduct('+i+')" value="Sửa"></td>\n' +
+                '        <td><input type="button" onclick="deleteProduct('+i+')" value="Xóa"></td>\n' +
+                '    </tr>';
+        }
+        content += '</table>'
+        document.getElementById("bangKetQua").innerHTML=content;
+    }
+    showAllProduct(productList);
+    function addProduct() {
+        let newpro=document.getElementById("nhapNhap").value;
+        productList.push(newpro);
+        showAllProduct(productList)
+    }
+    function deleteProduct(index) {
+        productList.splice(index,1);
+        showAllProduct(productList)
+    }
+    function editProduct(index) {
+        let newprod=prompt("mời bạn nhập vào giá trị thay thế");
+        productList[index]=newprod;
+        showAllProduct(productList);
+    }
+</script>
+</html>

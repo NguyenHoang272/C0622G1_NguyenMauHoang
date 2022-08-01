@@ -21,7 +21,8 @@
                 let check = true;
                 for (let k = 2; k < arr[i][j]; k++) {
                     if (arr[i][j] % k === 0) {
-                        check = false
+                        check = false;
+                        break;
                     }
                 }
                 if (check) {

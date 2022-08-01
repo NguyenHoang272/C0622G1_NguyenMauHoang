@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai 2</title>
+</head>
+<body>
+<script>
+    // function kiemTraDinhDang(dd/MM/yyyy) {
+    //     if(nhapNam === dd+"/"+MM"/"+YY){
+    //         return true;
+    //     }else {
+    //         alert("Nhập lại");
+    //         return false;
+    //     }
+    // }
+
+     let nhapNam = +prompt("Nhập năm: ");
+     function kiemTraNamNhuan(nam){
+        if ((nam % 4===0 &&nam%100 !==0 && nam % 400 !==0)||(nam%100===0 && nam % 400===0)){
+            return nam + " Là năm nhuận.";
+        } else{
+            return nam + " Là năm không nhuận";
+        }
+    }
+    document.write(kiemTraNamNhuan(nhapNam +":"));
+
+
+</script>
+</body>
+</html>

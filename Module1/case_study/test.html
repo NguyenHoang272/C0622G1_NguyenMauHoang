@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="ketQua"></p>
+<input type="button" onclick="themXe()" value="thêm xe ">
+</body>
+<script>
+    class XeMay{
+        constructor(hangXe,chuSoHuu,bienSo) {
+            this.hangXe= hangXe;
+            this.chuSoHuu= chuSoHuu;
+            this.bienSo= bienSo;
+        }
+        setBienSo(value){
+            this.bienSo=value;
+        }
+        setHangXe(value){
+            this.hangXe=value;
+        }
+        setChuSoHuu(value){
+            this.chuSoHuu=value;
+        }
+        getBienSo(){
+            return this.bienSo;
+        }
+        getHangXe(){
+            return this.hangXe;
+        }
+        getChuSoHuu(){
+            return this.chuSoHuu;
+        }
+    }
+    let xe1 = new XeMay ("honda","hoàng","00098");
+    let danhSachXe=[xe1];
+    let conten='';
+    function bangDanhSach(list){
+         conten='<table border="1">\n'+
+            '<tr>\n'+
+            '<td>stt</td>\n' +
+            '<td>Hang Xe</td>'+
+            '<td>Chu So Huu</td>'+
+             '<td>Bien So</td>'+
+            '<td>Xoa</td>'+
+            '<td>Sua</td>'+
+            '</tr>';
+
+    for (let i = 0; i <list.length ; i++) {
+            conten+='<tr>';
+            conten+='<td>'+(i+1)+'</td>';
+            conten+='<td>'+list[i].getHangXe()+'</td>';
+            conten+='<td>'+list[i].getChuSoHuu()+'</td>';
+            conten+='<td>'+list[i].getBienSo()+'</td>';
+            conten+='<td><input type="button" onclick="xoaXe('+i+')" value="Xóa"></td>';
+            conten+='<td> <input type="button" onclick="suaXe('+i+')" value="Sửa">  </td>';
+            conten+='</tr>';
+    }
+    conten += '</table>';
+    document.getElementById("ketQua").innerHTML = conten;
+    }
+    bangDanhSach(danhSachXe);
+
+    function  themXe() {
+        let xeMoi= new XeMay();
+        xeMoi.setHangXe(prompt("nhập vào hãng xe mới"));
+        xeMoi.setChuSoHuu(prompt("Nhập chủ xe mới"));
+        xeMoi.setBienSo(prompt("Nhập chủ xe mới"));
+        danhSachXe.push(xeMoi);
+        bangDanhSach(danhSachXe);
+    }
+    function xoaXe(index) {
+        danhSachXe.splice(index,1)
+        bangDanhSach(danhSachXe);
+    }
+    function suaXe(index) {
+        let newXe=prompt("nhập lại hãng xe bạn muốn");
+        let newTen=prompt("nhập lại tên bạn muốn");
+        let newBienSo=prompt("nhập lại tên bạn muốn");
+        let xeMoi= new XeMay(newXe,newTen,newBienSo);
+        danhSachXe.splice(index,1,xeMoi);
+        bangDanhSach(danhSachXe);
+    }
+</script>
+</html>

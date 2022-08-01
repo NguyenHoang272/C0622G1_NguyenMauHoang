@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //    function demKytu(str) {
+    //        let array= [];
+    //        let chuHoa='A,B,C,D,E,F';
+    //        let chuThuong='a,b,c,d,e,f';
+    //        let demHoa=0;
+    //        let demThuong=0;
+    //        for (let i = 0; i <str.length ; i++) {
+    //            if(chuHoa.includes(str[i])){
+    //                demHoa++;
+    //            }if(chuThuong.includes(str[i])){
+    //                demThuong++;
+    //            }
+    //        }
+    //        array.push(demHoa,demThuong);
+    //        return array;
+    //    }
+    //
+    //
+    //    let qua=demKytu("Ba ba");
+    //    document.write("số lượng kí tự in hoa là:"+qua[0]+"số ký tự tin thường là:"+qua[1]);
+
+    function demKytu(str) {
+        let arr = [];
+        let demHoa = [];
+        let demThuong = [];
+        for (let i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+                demHoa.push(str[i])
+            }
+            if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) {
+                demThuong.push(str[i])
+            }
+        }
+        arr.push(demHoa.length, demThuong.length);
+        return arr;
+
+    }
+
+    let array = "ba BA BA";
+    alert(demKytu(array));
+
+
+</script>
+</body>
+</html>
