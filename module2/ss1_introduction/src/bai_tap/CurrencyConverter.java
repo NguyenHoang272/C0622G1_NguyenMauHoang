@@ -2,7 +2,7 @@ package bai_tap;
 
 import java.util.Scanner;
 
-public class CurrencyConverterAssignment {
+public class CurrencyConverter {
     public static void main(String[] args){
         int quyDoi;
         Scanner scanner = new Scanner(System.in);
