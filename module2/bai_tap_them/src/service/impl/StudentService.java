@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentService {
+public class StudentService implements IStudentService{
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>() ;
 
