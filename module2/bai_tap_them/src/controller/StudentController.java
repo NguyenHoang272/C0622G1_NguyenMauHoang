@@ -11,7 +11,7 @@ public class StudentController {
 //    Nguyên lý D trong SOLID
     private IStudentService studentService = new StudentService();
 
-    public void menuManagement() {
+    public void menuManagementStudent() {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với C06");

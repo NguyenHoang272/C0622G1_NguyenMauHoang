@@ -3,10 +3,10 @@ package model;
 public abstract class Person {
     private int id;
     private String name;
-    private String dayOfBrith;
+    private String dateOfBirth;
+    private String sex;
 
-    public Person(){
-
+    public Person() {
     }
 
     @Override
@@ -14,14 +14,23 @@ public abstract class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dayOfBrith='" + dayOfBrith + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
                 '}';
     }
 
-    public Person(int id, String name, String dayOfBrith) {
+    public Person(int id, String name, String dateOfBirth,String sex) {
         this.id = id;
         this.name = name;
-        this.dayOfBrith = dayOfBrith;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public int getId() {
@@ -40,11 +49,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public String getDayOfBrith() {
-        return dayOfBrith;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDayOfBrith(String dayOfBrith) {
-        this.dayOfBrith = dayOfBrith;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

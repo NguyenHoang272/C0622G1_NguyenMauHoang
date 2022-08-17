@@ -1,10 +1,11 @@
 package view;
 
+import controller.MemberController;
 import controller.StudentController;
 
 public class MainView {
     public static void main(String[] args) {
-        StudentController studentController = new StudentController();
-        studentController.menuManagement();
+        MemberController memberController = new MemberController();
+        memberController.menuManagement();
     }
 }

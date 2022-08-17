@@ -7,12 +7,18 @@ public class Student extends Person {
     public Student() {
     }
 
+
+
     @Override
     public String toString() {
         return "Student{" +
-                "point=" + point +
-                ", nameClass='" + nameClass + '\'' +
-                "} " + super.toString();
+                " ID = " + getId() +
+                " Name =" + getName() +
+                " Date of Birth = " + getDateOfBirth() +
+                " Sex = " + getSex() +
+                " point = " + point +
+                " ,nameClass = '" + nameClass +
+                "} ";
     }
 
     public Student(double point, String nameClass) {
@@ -20,8 +26,10 @@ public class Student extends Person {
         this.nameClass = nameClass;
     }
 
-    public Student(int id, String name, String dateOfBirth, double point, String nameClass) {
-        super(id, name, dateOfBirth);
+
+
+    public Student(int id, String name, String dateOfBirth, String sex, String nameClass, double point) {
+        super(id, name, dateOfBirth, sex);
         this.point = point;
         this.nameClass = nameClass;
     }
