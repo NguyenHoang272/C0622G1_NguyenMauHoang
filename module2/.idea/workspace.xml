@@ -20,22 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd966d89-40bd-45d1-8ac3-64337f4c6963" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/fibonaci_hihi.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/may_tinh.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/may_tinh_2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/menu_san_pham.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/on_thi.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/test_2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/test_3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/case_study/test_4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/thi_module_1/bai_1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/thi_module_1/bai_2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module1/thi_module_1/bai_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module1/case_study/task1_bai_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module1/case_study/task1_bai_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module1/case_study/task_1_bai_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module1/case_study/task_1_bai_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module1/case_study/task_5_bai_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module1/case_study/task_5_bai_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module1/case_study/task_5_bai_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module1/case_study/task_5_bai_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss13_search_algorithm/src/Test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss14/src/illustration_insertion_sort/IllustrationInsertionSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss14/src/setting_insertion_sort/SettingInsertionSort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bai_tap_them" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
@@ -77,6 +65,7 @@
       <updated>1659082907211</updated>
       <workItem from="1659082920866" duration="112000" />
       <workItem from="1659328364819" duration="334000" />
+      <workItem from="1660796006798" duration="198000" />
     </task>
     <servers />
   </component>
@@ -93,12 +82,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1659083017838">
+    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1660796206854">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1659083017838" />
+    <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1660796206854" />
     <state x="91" y="0" key="new project wizard" timestamp="1659328728968">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
