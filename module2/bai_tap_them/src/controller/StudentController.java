@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 public class StudentController {
     private static Scanner scanner = new Scanner(System.in);
-    //    DI
-//    Nguyên lý D trong SOLID
+
     private IStudentService studentService = new StudentService();
 
     public void menuManagementStudent() {
