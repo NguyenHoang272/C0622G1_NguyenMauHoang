@@ -1,4 +1,4 @@
-package ulti_exception.ulti_exception;
+package util.exception;
 
 public class StringFormatException extends Exception {
     public StringFormatException(String message){

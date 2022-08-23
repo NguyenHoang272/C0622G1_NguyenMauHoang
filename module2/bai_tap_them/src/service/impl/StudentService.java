@@ -1,13 +1,16 @@
 package service.impl;
 
 import model.Student;
-import model.Teacher;
 import service.IStudentService;
-import ulti_exception.ulti_exception.*;
+import ulti_exception.exception.ReadFileUlti;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static ulti_exception.exception.WriteFileUlti.writeFile;
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
@@ -154,11 +157,11 @@ public class StudentService implements IStudentService {
                 for (int i = 0; i < name.length(); i++) {
                     str = "";
                     if ((str + name.charAt(i)).matches("\\d+")) {
-                        throw new StringFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                        throw new util.exception.StringFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
                     }
                 }
                 break;
-            } catch (StringFormatException e) {
+            } catch (util.exception.StringFormatException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Trường hợp ngoại lệ");
@@ -170,10 +173,10 @@ public class StudentService implements IStudentService {
                 System.out.print("Mời bạn nhập ngày sinh: ");
                 dateOfBirth = scanner.nextLine();
                 if (!dateOfBirth.matches("\\d+\\d+\\W+\\d+\\d+\\W+\\d+\\d+\\d+\\d")) {
-                    throw new DateOfBirthException("Dữ liệu không đúng định dạng");
+                    throw new util.exception.DateOfBirthException("Dữ liệu không đúng định dạng");
                 }
                 if (Integer.parseInt(dateOfBirth.substring(6)) > 2016) {
-                    throw new DateOfBirthException("Dữ liệu không đúng định dạng");
+                    throw new util.exception.DateOfBirthException("Dữ liệu không đúng định dạng");
                 }
                 break;
             } catch (Exception e) {
@@ -186,7 +189,7 @@ public class StudentService implements IStudentService {
                 System.out.print("Mời bạn nhập giới tính: ");
                 sex = scanner.nextLine();
                 if (!sex.equals("Nam") && (!sex.equals("Nữ"))) {
-                    throw new GenderException("Dữ liệu bạn nhập không hợp lệ");
+                    throw new util.exception.GenderException("Dữ liệu bạn nhập không hợp lệ");
                 }
                 break;
             } catch (Exception e) {
@@ -199,12 +202,12 @@ public class StudentService implements IStudentService {
                 System.out.print("Mời bạn nhập điểm: ");
                 point = Double.parseDouble(scanner.nextLine());
                 if (point < 0 || point > 100) {
-                    throw new PointException("Bạn không thể nhập điểm nhỏ hơn 0 hoặc lớn hơn 100");
+                    throw new util.exception.PointException("Bạn không thể nhập điểm nhỏ hơn 0 hoặc lớn hơn 100");
                 }
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Bạn nhập không phải là số. Yêu cầu nhập lại.");
-            } catch (PointException p) {
+            } catch (util.exception.PointException p) {
                 System.err.println(p.getMessage());
             } catch (Exception e) {
                 System.out.println("Trường hợp ngoại lệ");
@@ -216,15 +219,34 @@ public class StudentService implements IStudentService {
                 System.out.print("Mời bạn nhập tên lớp: ");
                 nameClass = scanner.nextLine();
                 if (!nameClass.matches("\\D+\\d+\\d+\\d+\\d+\\D+\\d")) {
-                    throw new NameClassException("Tên lớp không hợp lệ");
+                    throw new util.exception.NameClassException("Tên lớp không hợp lệ");
                 }
                 break;
-            } catch (NameClassException e) {
+            } catch (util.exception.NameClassException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
         return new Student(id, name, dateOfBirth, sex, nameClass, point);
+    }
+
+    public static List<Student> readStudentFile(String path) throws IOException {
+        List<String> strings = ReadFileUlti.readFile(path);
+        List<Student> students = new ArrayList<>();
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            students.add(new Student(Integer.parseInt(info[0]),info[1], info[2], info[3], info[4], Double.parseDouble(info[5])));
+        }
+        return students;
+    }
+    public static void writeStudentFile(String path, List<Student> students) throws IOException {
+        String data = "";
+        for (Student student : students) {
+            data += student.toString();
+            data += "\n";
+        }
+        writeFile(path, data);
     }
 }

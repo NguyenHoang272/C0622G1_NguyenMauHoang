@@ -2,14 +2,18 @@ package service.impl;
 
 import model.Teacher;
 import service.ITeacherService;
-import ulti_exception.ulti_exception.DateOfBirthException;
-import ulti_exception.ulti_exception.GenderException;
-import ulti_exception.ulti_exception.QualificationException;
-import ulti_exception.ulti_exception.StringFormatException;
+import ulti_exception.exception.ReadFileUlti;
+import util.exception.DateOfBirthException;
+import util.exception.GenderException;
+import util.exception.QualificationException;
+import util.exception.StringFormatException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static ulti_exception.exception.WriteFileUlti.writeFile;
 
 public class TeacherService implements ITeacherService {
     private static Scanner scanner = new Scanner(System.in);
@@ -226,5 +230,26 @@ public class TeacherService implements ITeacherService {
             }
         }
         return new Teacher(id, name, dateOfBirth, sex, qualification);
+    }
+
+    public static List<Teacher> readTeacherFile(String path) throws IOException {
+        List<String> strings = ReadFileUlti.readFile(path);
+        List<Teacher> teachers = new ArrayList<>();
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            teachers.add(new Teacher(Integer.parseInt(info[0]),info[1], info[2], info[3], info[4]));
+        }
+
+        return teachers;
+    }
+    public static void writeTeacherFile(String path, List<Teacher> teachers) throws IOException {
+        String data = "";
+        for (Teacher teacher : teachers) {
+            data += teacher.toString();
+            data += "\n";
+        }
+
+        writeFile(path, data);
     }
 }

@@ -1,4 +1,4 @@
-package ulti_exception.ulti_exception;
+package util.exception;
 
 public class QualificationException extends Exception{
     public QualificationException(String message){

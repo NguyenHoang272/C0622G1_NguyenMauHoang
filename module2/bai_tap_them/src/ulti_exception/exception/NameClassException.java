@@ -1,4 +1,4 @@
-package ulti_exception.ulti_exception;
+package util.exception;
 
 public class NameClassException extends Exception {
     public NameClassException(String message){

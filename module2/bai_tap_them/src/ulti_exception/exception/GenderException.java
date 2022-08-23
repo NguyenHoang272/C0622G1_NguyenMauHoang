@@ -1,4 +1,4 @@
-package ulti_exception.ulti_exception;
+package util.exception;
 
 public class GenderException extends Exception {
     public GenderException(String message){
