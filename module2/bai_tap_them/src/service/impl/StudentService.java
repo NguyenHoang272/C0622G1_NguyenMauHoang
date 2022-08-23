@@ -14,8 +14,8 @@ public class StudentService implements IStudentService {
     private static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student(1, "nguyen van hùng", "11/02/1996", "nam", "C06", 8));
-        students.add(new Student(2, "nguyen van danh", "23/04/2000", "nam", "C06", 9));
+        students.add(new Student(1, "nguyen van a", "11/02/1996", "nam", "C06", 8));
+        students.add(new Student(2, "nguyen van b", "23/04/2000", "nam", "C06", 9));
     }
 
 
