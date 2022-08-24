@@ -1,9 +1,6 @@
 package ss15_exception_debug.practice.test_exception_1;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.w3c.dom.ls.LSOutput;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 

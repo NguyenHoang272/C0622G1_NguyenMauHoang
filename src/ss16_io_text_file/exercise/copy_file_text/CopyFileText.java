@@ -30,7 +30,5 @@ public class CopyFileText {
         System.out.println("Số ký tự trong tệp: " + data.length());
         bufferedWriter.close();
 
-        //src\ss16_io_text_file\exercise\copy_file_text\source_file.txt
-        //src\ss16_io_text_file\exercise\copy_file_text\target_file.txt
     }
 }
