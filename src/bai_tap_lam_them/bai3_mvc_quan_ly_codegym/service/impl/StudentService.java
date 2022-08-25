@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class StudentService implements IStudentService {
     public Scanner scanner = new Scanner(System.in);
-    private static final String PATH = "src/bai_tap_lam_them/bai3_mvc_quan_ly_codegym/data/student.txt";
+    private static final String PATH = "C0622G1_NguyenMauHoang\\src\\bai_tap_lam_them\\bai3_mvc_quan_ly_codegym\\data\\student.csv";
     ReadStudentFile readStudentFile = new ReadStudentFile();
     WriteStudentFile writeStudentFile = new WriteStudentFile();
 
@@ -203,13 +203,45 @@ public class StudentService implements IStudentService {
     public Student getInfoStudent() {
         System.out.println("Vui lòng nhập thông tin cho sinh viên: ");
         String id = getID();
-        String name = getInfo("Tên");
+        String name = getName();
         String dateOfBirth = getDateOfBirth();
         String gender = getInfo("Giới tính");
         double score = getScore();
-        String className = getInfo("Tên lớp");
+        String className = getClassName();
 
         return new Student(id, name, dateOfBirth, gender, score, className);
+    }
+
+    private String getName() {
+        String name;
+        boolean invalid = false;
+        System.out.print("Vui lòng nhập tên: ");
+        do {
+            name = scanner.nextLine();
+            invalid = ValidateName.validateName(name);
+            if (!invalid) {
+                System.out.println("Mi lo nhập lại");
+            }
+        }
+        while (!invalid);
+        return name;
+    }
+
+    private String getClassName() {
+        String className;
+        boolean invalid = false;
+        System.out.print("Vui lòng nhập tên lớp: ");
+        do {
+
+
+            className = scanner.nextLine();
+            invalid = ValidateClassName.validateClassName(className);
+            if (!invalid) {
+                System.out.println("mi lo nhập lại");
+            }
+        }
+        while (!invalid);
+        return className;
     }
 
     private String getDateOfBirth() {
