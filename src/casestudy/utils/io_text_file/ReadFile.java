@@ -8,7 +8,6 @@ public class ReadFile {
     public static List<String> readFile(String path) {
 
         List<String> strings = new ArrayList<>();
-//        bufferedReader.readLine();
         String line;
         try {
             File file = new File(path);

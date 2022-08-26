@@ -12,7 +12,7 @@ public class EmployeeService implements IEmployeeService {
     private static Scanner scanner = new Scanner(System.in);
    private static List<Employee> employees = new ArrayList<>();
 static {
-    employees.add( new Employee("134","ứdrft","sdfg","fg","456788",234567,"dfg","fg","d","4567"));
+    employees.add( new Employee("123123","Congchua","20/02/2001","nam","032909854",03452,"abc@gmail.com","12","nhanvien","112233"));
 }
 
 
