@@ -6,6 +6,7 @@ import casestudy.models.facility.House;
 import casestudy.models.facility.Room;
 import casestudy.models.facility.Villa;
 import casestudy.services.IFacilityService;
+import casestudy.utils.exception.FacilityException;
 import casestudy.utils.io_text_file.ReadAndWriteFacility;
 
 import java.util.*;
@@ -15,9 +16,9 @@ public class FacilityService implements IFacilityService {
     private static final String PATH_VILLA = "C0622G1_NguyenMauHoang\\src\\casestudy\\data\\villa.csv";
     private static final String PATH_HOUSE = "C0622G1_NguyenMauHoang\\src\\casestudy\\data\\house.csv";
     private static final String PATH_ROOM = "C0622G1_NguyenMauHoang\\src\\casestudy\\data\\room.csv";
-    private static final String VILLA_REGEX = "^[S][V][V][L][0-9]{4}$";
-    private static final String HOUSE_REGEX = "^[S][V][H][O][0-9]{4}$";
-    private static final String ROOM_REGEX = "^[S][V][R][O][0-9]{4}$";
+    private static final String VILLA_REGEX = "^SVVL[0-9]{4}$";
+    private static final String HOUSE_REGEX = "^SVHO[0-9]{4}$";
+    private static final String ROOM_REGEX = "^SVRO[0-9]{4}$";
 
     @Override
     public void displayListFacility() {
@@ -35,6 +36,8 @@ public class FacilityService implements IFacilityService {
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Vui lòng nhập số");
+                } catch (Exception e) {
+                    System.out.println("Bạn nhập sai, vui lòng nhập lại.");
                 }
             }
 
@@ -66,7 +69,7 @@ public class FacilityService implements IFacilityService {
                         System.out.println("Danh sách phòng trống");
                     } else {
                         for (Facility room : rooms.keySet()) {
-                            System.out.println(room + " số lượng ");
+                            System.out.println(room + " được sử dụng là: " + rooms.get(room));
                         }
                     }
                     break;
@@ -99,27 +102,130 @@ public class FacilityService implements IFacilityService {
                 addNewRoom();
                 break;
             case 4:
-               return;
+                return;
 
         }
     }
 
     private void addNewRoom() {
         Map<Facility, Integer> rooms = new LinkedHashMap<>();
-        System.out.print("Mời bạn nhập mã dịch vụ phòng");
-        String serviceCode = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên dịch vụ");
-        String serviceName = scanner.nextLine();
-        System.out.print("Mời bạn nhập diện tích phòng");
-        double area = Double.parseDouble(scanner.nextLine());
-        System.out.print("Mời bạn nhập giá phòng");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Mời bạn nhập số lượng người thuê");
-        int amountOfPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Mời bạn nhập kiểu thuê ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Mời bạn nhập dịch vụ miễn phí đi kèm");
-        String freeStuff = scanner.nextLine();
+
+        String serviceCode;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập mã dịch vụ phòng");
+                serviceCode = scanner.nextLine();
+                if (!serviceCode.matches(ROOM_REGEX)) {
+                    throw new FacilityException("Vui lòng nhập đúng định dạng mã dịch vụ phòng là SVRO-XXXX (với X là số)");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Vui lòng nhập đúng định dạng");
+            }
+        }
+
+
+        String serviceName;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập tên dịch vụ");
+                serviceName = scanner.nextLine();
+                if (!serviceName.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập tên dịch vụ với chữ cái đầu phải viết hoa và các kí tự phía sau là viết thường");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại cho đúng.");
+            }
+        }
+
+        double area;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập diện tích phòng");
+                area = Double.parseDouble(scanner.nextLine());
+                if (area < 30) {
+                    throw new FacilityException("Diện tích sử dụng phải lớn hơn 30m^2");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        double price;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập giá phòng");
+                price = Double.parseDouble(scanner.nextLine());
+                if (price < 0) {
+                    throw new FacilityException("Vui lòng nhập chi phí thuê lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số.");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai, vui lòng nhập lại");
+            }
+        }
+
+
+        int amountOfPeople;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập số lượng người thuê");
+                amountOfPeople = Integer.parseInt(scanner.nextLine());
+                if (amountOfPeople < 0 && amountOfPeople > 20) {
+                    throw new FacilityException("Vui lòng nhập số lượng người nhỏ hơn 20 và lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String rentalType;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập kiểu thuê ");
+                rentalType = scanner.nextLine();
+                if (!rentalType.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String freeStuff;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập dịch vụ miễn phí đi kèm");
+                freeStuff = scanner.nextLine();
+                if (!freeStuff.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
         Room room = new Room(serviceCode, serviceName, area, price, amountOfPeople, rentalType, freeStuff);
         rooms.put(room, 0);
         ReadAndWriteFacility.writeFacilityFile(PATH_ROOM, rooms, true);
@@ -128,22 +234,140 @@ public class FacilityService implements IFacilityService {
 
     private void addNewHouse() {
         Map<Facility, Integer> houses = new LinkedHashMap<>();
-        System.out.print("Mời bạn nhập mã dịch vụ phòng");
-        String serviceCode = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên dịch vụ");
-        String serviceName = scanner.nextLine();
-        System.out.print("Mời bạn nhập diện tích phòng");
-        double area = Double.parseDouble(scanner.nextLine());
-        System.out.print("Mời bạn nhập giá phòng");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Mời bạn nhập số lượng người thuê");
-        int amountOfPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Mời bạn nhập kiểu thuê ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Mời bạn nhập tiêu chuẩn phòng");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Mời bạn nhập số tầng");
-        int floor = Integer.parseInt(scanner.nextLine());
+        String serviceCode;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập mã dịch vụ phòng");
+                serviceCode = scanner.nextLine();
+                if (!serviceCode.matches(HOUSE_REGEX)) {
+                    throw new FacilityException("Vui lòng nhập đúng định dạng mã dịch vụ phòng là SVHO-XXXX (với X là số)");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Vui lòng nhập đúng định dạng");
+            }
+        }
+
+
+        String serviceName;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập tên dịch vụ");
+                serviceName = scanner.nextLine();
+                if (!serviceName.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập tên dịch vụ với chữ cái đầu phải viết hoa và các kí tự phía sau là viết thường");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại cho đúng.");
+            }
+        }
+
+        double area;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập diện tích phòng");
+                area = Double.parseDouble(scanner.nextLine());
+                if (area < 30) {
+                    throw new FacilityException("Diện tích sử dụng phải lớn hơn 30m^2");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        double price;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập giá phòng");
+                price = Double.parseDouble(scanner.nextLine());
+                if (price < 0) {
+                    throw new FacilityException("Vui lòng nhập chi phí thuê lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số.");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai, vui lòng nhập lại");
+            }
+        }
+
+
+        int amountOfPeople;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập số lượng người thuê");
+                amountOfPeople = Integer.parseInt(scanner.nextLine());
+                if (amountOfPeople < 0 && amountOfPeople > 20) {
+                    throw new FacilityException("Vui lòng nhập số lượng người nhỏ hơn 20 và lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String rentalType;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập kiểu thuê ");
+                rentalType = scanner.nextLine();
+                if (!rentalType.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String roomStandard;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập tiêu chuẩn phòng");
+                roomStandard = scanner.nextLine();
+                if (!roomStandard.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        int floor;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập số tầng");
+                floor = Integer.parseInt(scanner.nextLine());
+                if (floor < 0) {
+                    throw new FacilityException("Vui lòng nhập số nguyên dương");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số.");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại");
+            }
+        }
+
         House house = new House(serviceCode, serviceName, area, price, amountOfPeople, rentalType, roomStandard, floor);
         houses.put(house, 0);
         ReadAndWriteFacility.writeFacilityFile(PATH_HOUSE, houses, true);
@@ -152,24 +376,154 @@ public class FacilityService implements IFacilityService {
 
     private void addNewVilla() {
         Map<Facility, Integer> villas = new LinkedHashMap<>();
-        System.out.print("Mời bạn nhập mã dịch vụ phòng");
-        String serviceCode = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên dịch vụ");
-        String serviceName = scanner.nextLine();
-        System.out.print("Mời bạn nhập diện tích phòng");
-        double area = Double.parseDouble(scanner.nextLine());
-        System.out.print("Mời bạn nhập giá phòng");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Mời bạn nhập số lượng người thuê");
-        int amountOfPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Mời bạn nhập kiểu thuê ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Mời bạn nhập tiêu chuẩn phòng");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Mời bạn nhập diện tích hồ bơi");
-        double poolArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Mời bạn nhập số tầng");
-        int floor = Integer.parseInt(scanner.nextLine());
+        String serviceCode;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập mã dịch vụ phòng");
+                serviceCode = scanner.nextLine();
+                if (!serviceCode.matches(VILLA_REGEX)) {
+                    throw new FacilityException("Vui lòng nhập đúng định dạng mã dịch vụ phòng là SVVL-XXXX (với X là số)");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Vui lòng nhập đúng định dạng");
+            }
+        }
+
+
+        String serviceName;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập tên dịch vụ");
+                serviceName = scanner.nextLine();
+                if (!serviceName.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập tên dịch vụ với chữ cái đầu phải viết hoa và các kí tự phía sau là viết thường");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại cho đúng.");
+            }
+        }
+
+        double area;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập diện tích phòng");
+                area = Double.parseDouble(scanner.nextLine());
+                if (area < 30) {
+                    throw new FacilityException("Diện tích sử dụng phải lớn hơn 30m^2");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        double price;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập giá phòng");
+                price = Double.parseDouble(scanner.nextLine());
+                if (price < 0) {
+                    throw new FacilityException("Vui lòng nhập chi phí thuê lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số.");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai, vui lòng nhập lại");
+            }
+        }
+
+
+        int amountOfPeople;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập số lượng người thuê");
+                amountOfPeople = Integer.parseInt(scanner.nextLine());
+                if (amountOfPeople < 0 || amountOfPeople > 20) {
+                    throw new FacilityException("Vui lòng nhập số lượng người nhỏ hơn 20 và lớn hơn 0");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String rentalType;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập kiểu thuê ");
+                rentalType = scanner.nextLine();
+                if (!rentalType.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        String roomStandard;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập tiêu chuẩn phòng");
+                roomStandard = scanner.nextLine();
+                if (!roomStandard.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                    throw new FacilityException("Vui lòng nhập kiểu thuê với ký tự đầu là viết hoa, các ký tự sau là viết thường.");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+        }
+
+        double poolArea;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập diện tích hồ bơi");
+                poolArea = Double.parseDouble(scanner.nextLine());
+                if (poolArea < 30) {
+                    throw new FacilityException("Diện tích sử dụng phải lớn hơn 30m^2");
+                }
+                break;
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+        int floor;
+        while (true) {
+            try {
+                System.out.println("Mời bạn nhập số tầng");
+                floor = Integer.parseInt(scanner.nextLine());
+                if (floor < 0) {
+                    throw new FacilityException("Vui lòng nhập số nguyên dương");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số.");
+            } catch (FacilityException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Bạn nhập sai định dạng, vui lòng nhập lại");
+            }
+        }
         Villa villa = new Villa(serviceCode, serviceName, area, price, amountOfPeople, rentalType, roomStandard, poolArea, floor);
         villas.put(villa, 0);
         ReadAndWriteFacility.writeFacilityFile(PATH_VILLA, villas, true);

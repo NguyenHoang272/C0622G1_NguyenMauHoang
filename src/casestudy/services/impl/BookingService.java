@@ -19,7 +19,7 @@ public class BookingService implements IBookingService {
     private static Scanner scanner = new Scanner(System.in);
     private static ICustomerService customerService = new CustomerService();
     private static IFacilityService facilityService = new FacilityService();
-    private static final String BOOKING_PATH = "src\\casestudy\\data\\booking.csv";
+    private static final String BOOKING_PATH = "C0622G1_NguyenMauHoang\\src\\casestudy\\data\\booking.csv";
 
     @Override
     public void addNewBooking() {
