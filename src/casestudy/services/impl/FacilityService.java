@@ -41,6 +41,7 @@ public class FacilityService implements IFacilityService {
                 }
             }
 
+            
             switch (choice) {
                 case 1:
                     Map<Facility, Integer> villas = ReadAndWriteFacility.readFacilityFile(PATH_VILLA);
